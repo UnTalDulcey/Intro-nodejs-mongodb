@@ -17,6 +17,11 @@ app.use(function(req, res, next) {
   next();
 });
 
+//configuración de mongo
+var mongoose = require('mongoose');
+var config   = require('./config');
+mongoose.connect(config.MONGO_URL);
+
 //ruta inicial
 app.get('/', function(req, res) {
   
@@ -44,9 +49,7 @@ app.post('/info', function(req, res) {
     logger.info('POST', req.body);
 
     var infoNueva = req.body.info;
-    
     infoNueva.id = id+=1;
-
     infodb[infoNueva.id] = infoNueva;
 
     res.set('Content-Type','application/json');
@@ -54,6 +57,60 @@ app.post('/info', function(req, res) {
 
     res.json(
         {info: infodb[infoNueva.id]
+    });
+});
+
+
+app.get('/cines', function(req, res){
+    logger.info('GET /cines');
+    var cine = require('./cinemodel');
+
+    // cine.create({
+    //     ciudad: "Villavicencio",
+    //     cines: [
+    //         {
+    //             nombre: "Cine Colombia",
+    //             direccion: "viva CC",
+    //             telefono: "6600000",
+    //             peliculas: [
+    //                 {
+    //                     nombre: "el rey león",
+    //                     hora: "6 AM",
+    //                     imagen: "http://www.adisney.com/personajes/reyleon/img/mufasaysimba.jpg"
+    //                 },
+    //                 {
+    //                     nombre: "el rey león",
+    //                     hora: "6 AM",
+    //                     imagen: "http://www.adisney.com/personajes/reyleon/img/mufasaysimba.jpg"
+    //                 }                                        
+    //             ]
+    //         },
+    //        { 
+    //             nombre: "Cine Marandua",
+    //             direccion: "centro",
+    //             telefono: "6600000",
+    //             peliculas: [
+    //                 {
+    //                     nombre: "el rey león",
+    //                     hora: "6 AM",
+    //                     imagen: "http://www.adisney.com/personajes/reyleon/img/mufasaysimba.jpg"
+    //                 },
+    //                 {
+    //                     nombre: "el rey león",
+    //                     hora: "6 AM",
+    //                     imagen: "http://www.adisney.com/personajes/reyleon/img/mufasaysimba.jpg"
+    //                 }                                        
+    //             ]
+    //         }
+    //     ]
+    // }, function(err, newcine){
+    //     if(err) console.log("Error en creación"+ err);
+    //     res.json(newcine);
+    // });
+
+    cine.find({}, function(err, data){
+        console.log(data);
+        res.json(data);
     });
 });
 
