@@ -21,6 +21,16 @@ app.get('/', function(req, res) {
 
 });
 
+//ruta inicial con parámetro
+app.get('/alguien/:nombre', function(req, res) {
+  
+  logger.info('GET /%s', req.params.nombre);
+  res.json({
+    hola: req.params.nombre
+  })
+
+});
+
 
 //le decimos a nuestra app que empiece a escuchar por el puerto en la variable port
 app.listen(port, function(){
