@@ -1,0 +1,26 @@
+{
+  "name": "Intro-nodejs-mongodb",
+  "version": "1.0.0",
+  "description": "demo para villavojs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VillavicencioJS/Intro-nodejs-mongodb.git"
+  },
+  "keywords": [
+    "iojs"
+  ],
+  "author": "@soybackend",
+  "license": "GPU",
+  "bugs": {
+    "url": "https://github.com/VillavicencioJS/Intro-nodejs-mongodb/issues"
+  },
+  "homepage": "https://github.com/VillavicencioJS/Intro-nodejs-mongodb",
+  "dependencies": {
+    "express": "^4.12.2"
+  }
+}
