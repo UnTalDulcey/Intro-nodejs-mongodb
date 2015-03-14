@@ -63,55 +63,61 @@ app.post('/info', function(req, res) {
 
 app.get('/cines', function(req, res){
     logger.info('GET /cines');
-    var cine = require('./cinemodel');
-
-    // cine.create({
-    //     ciudad: "Villavicencio",
-    //     cines: [
-    //         {
-    //             nombre: "Cine Colombia",
-    //             direccion: "viva CC",
-    //             telefono: "6600000",
-    //             peliculas: [
-    //                 {
-    //                     nombre: "el rey león",
-    //                     hora: "6 AM",
-    //                     imagen: "http://www.adisney.com/personajes/reyleon/img/mufasaysimba.jpg"
-    //                 },
-    //                 {
-    //                     nombre: "el rey león",
-    //                     hora: "6 AM",
-    //                     imagen: "http://www.adisney.com/personajes/reyleon/img/mufasaysimba.jpg"
-    //                 }                                        
-    //             ]
-    //         },
-    //        { 
-    //             nombre: "Cine Marandua",
-    //             direccion: "centro",
-    //             telefono: "6600000",
-    //             peliculas: [
-    //                 {
-    //                     nombre: "el rey león",
-    //                     hora: "6 AM",
-    //                     imagen: "http://www.adisney.com/personajes/reyleon/img/mufasaysimba.jpg"
-    //                 },
-    //                 {
-    //                     nombre: "el rey león",
-    //                     hora: "6 AM",
-    //                     imagen: "http://www.adisney.com/personajes/reyleon/img/mufasaysimba.jpg"
-    //                 }                                        
-    //             ]
-    //         }
-    //     ]
-    // }, function(err, newcine){
-    //     if(err) console.log("Error en creación"+ err);
-    //     res.json(newcine);
-    // });
+    var cine = require('./cinemodel');    
 
     cine.find({}, function(err, data){
         console.log(data);
         res.json(data);
     });
+});
+
+app.get('/test', function(req, res){
+    logger.info('GET Test');
+    var cine = require('./cinemodel');
+
+    cine.create({
+        ciudad: "Villavicencio",
+        cines: [
+            {
+                nombre: "Cine Colombia",
+                direccion: "viva CC",
+                telefono: "6600000",
+                peliculas: [
+                    {
+                        nombre: "el rey león",
+                        hora: "6 AM",
+                        imagen: "http://www.adisney.com/personajes/reyleon/img/mufasaysimba.jpg"
+                    },
+                    {
+                        nombre: "el rey león",
+                        hora: "6 AM",
+                        imagen: "http://www.adisney.com/personajes/reyleon/img/mufasaysimba.jpg"
+                    }                                        
+                ]
+            },
+           { 
+                nombre: "Cine Marandua",
+                direccion: "centro",
+                telefono: "6600000",
+                peliculas: [
+                    {
+                        nombre: "el rey león",
+                        hora: "6 AM",
+                        imagen: "http://www.adisney.com/personajes/reyleon/img/mufasaysimba.jpg"
+                    },
+                    {
+                        nombre: "el rey león",
+                        hora: "6 AM",
+                        imagen: "http://www.adisney.com/personajes/reyleon/img/mufasaysimba.jpg"
+                    }                                        
+                ]
+            }
+        ]
+    }, function(err, newcine){
+        if(err) console.log("Error en creación"+ err);
+        res.json(newcine);
+    });
+
 });
 
 
