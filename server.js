@@ -9,6 +9,8 @@ var port = 3000;
 
 //nos permite parsear las peticiones como json
 app.use(bodyParser.json('application/json'));
+
+//middleware para permitir post
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
